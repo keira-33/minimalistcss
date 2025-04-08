@@ -3,3 +3,78 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html {
+    /* makes page change to fit browsers light/dark mode */
+    color-scheme: light dark;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    margin: 1rem auto;
+}
+
+header, .article-heading, main {
+    /* min() gives us the width property for whichever one of these is the minimum available property */
+    /* for specs below, 1.5 rem margin on each side */
+    width: min(120ch, 100% - 3rem);
+    /* 120ch is for full screen and 100%-3rem is for smaller screen */
+}
+
+header {
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    border-radius: 50%;
+    margin: 1rem;
+}
+/* > selects all its children then the rest are all selectors: selects every element within class flow, except for the first one */
+.flow > * + *{
+    margin-top: 1rem;
+}
+/* main has two children so when we do display flex, it puts aside and section side by side */
+main {
+    display: flex;
+    gap: 2rem;
+}
+
+section{
+    width: min(80ch, 100% - .25rem);
+}
+
+aside {
+    width: min(40ch, 100%- 1rem);
+}
+
+.related {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 2rem;
+    border-left: 20px solid salmon;
+    padding-left: 2rem;
+}
+
+.related img {
+    max-width: 200px;
+    margin: .5rem;
+}
+/* !media query! */
+@media (max-width:767px){
+    header, main, .related{
+        flex-direction: column;
+    }
+}
